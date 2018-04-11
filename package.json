@@ -1,0 +1,17 @@
+{
+  "name": "panda-es6-spa",
+  "version": "1.0.0",
+  "description": "Payroll Panda Task",
+  "main": "webpack.config.js",
+  "repository": "https://github.com/TheBlackDude/panda-es6-spa",
+  "author": "Ousmane",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "devDependencies": {
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14",
+    "webpack-dev-server": "^3.1.3"
+  }
+}
