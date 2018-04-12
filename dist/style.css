@@ -1,0 +1,89 @@
+body {
+  margin: 0px 50px 50px 50px;
+}
+
+/*
+ * css grid
+ */
+ /*.container {
+   display: grid;
+   grid-template-columns: 100%;
+ }*/
+
+ .first-header {
+   display: grid;
+   grid-gap: 500px;
+   grid-template-columns: 200px 200px;
+   border-bottom: 2px solid #4b4b4f;
+ }
+
+ #user {
+   grid-column: -1;
+ }
+
+ #bar {
+   font-weight: bold;
+ }
+
+ .header-icons {
+   color: #16ba2e;
+ }
+
+ .second-header {
+   display: grid;
+   grid-template-columns: 400px;
+ }
+
+ .angle {
+   color: #e0e5e5;
+ }
+
+ #page {
+   font-weight: normal;
+ }
+
+ a:link {
+   text-decoration: none;
+ }
+
+a:hover {
+  color: #16ba2e;
+  text-decoration: underline;
+}
+
+.third-header {
+  display: grid;
+  grid-gap: 450px;
+  grid-template-columns: 300px 200px;
+  grid-template-rows: 100px;
+  background-color: #f2f2f2;
+}
+
+#recycle {
+  grid-column: -1;
+}
+
+.fa-recycle {
+  font-size: 30px;
+  padding: 10px;
+}
+
+.fa-puzzle-piece, .fa-futbol, .fa-bicycle {
+  font-size: 30px;
+  color: #bbbbc1;
+}
+
+#sport {
+  position: relative;
+  left: 0px;
+  top: 0px;
+}
+
+#sector {
+  left: 0px;
+  top: 0px;
+}
+
+span {
+  font-size: 15px;
+}
