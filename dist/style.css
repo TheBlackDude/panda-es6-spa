@@ -53,37 +53,102 @@ a:hover {
 
 .third-header {
   display: grid;
-  grid-gap: 450px;
-  grid-template-columns: 300px 200px;
+  grid-template-columns: 200px 250px 260px 677px;
   grid-template-rows: 100px;
   background-color: #f2f2f2;
 }
 
-#recycle {
-  grid-column: -1;
+.fa-puzzle-piece, .fa-futbol, .fa-bicycle {
+  font-size: 40px;
+  color: #bbbbc1;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .fa-recycle {
-  font-size: 30px;
-  padding: 10px;
+  font-size: 40px;
+  grid-column: -1;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-.fa-puzzle-piece, .fa-futbol, .fa-bicycle {
-  font-size: 30px;
+.small {
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.big {
+  font-size: 15px;
+  color: black;
+}
+
+#recycle {
+  color: #bbbbc1;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+#green {
+  font-size: 15px;
+}
+
+.help {
+  display: grid;
+  grid-template-columns: 100%;
+  margin-top: 50px;
+}
+
+.accordion {
+  border: 1px solid #bbbbc1;
+  padding: 20px;
+  background-color: #f2f2f2;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.panel {
+  border: 1px solid #bbbbc1;
+  padding: 10px;
+  display: none;
+  overflow: hidden;
+}
+
+#help {
+  font-weight: bold;
+}
+
+#close {
+  color: #16ba2e;
+  margin-left: 500px;
+  padding-left: 830px;
+}
+
+.fa-life-ring {
+  font-size: 120px;
   color: #bbbbc1;
 }
 
-#sport {
-  position: relative;
-  left: 0px;
-  top: 0px;
+#ring {
+  display: grid;
+  grid-template-columns: 100px 1fr;
 }
 
-#sector {
-  left: 0px;
-  top: 0px;
+#text-1 {
+  font-size: 25px;
+  padding-top: 20px;
+  padding-left: 30px;
 }
 
-span {
-  font-size: 15px;
+#text-2 {
+  font-size: 25px;
+  grid-column: 1 / -1
 }
