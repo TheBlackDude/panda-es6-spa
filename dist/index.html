@@ -63,12 +63,83 @@
       </div>
     </div>
 
-    <div id="form">
-      <p>form</p>
+    <div  class="form">
+      <h1>User registration</h1>
+      <form id="bikersForm" class="formInputs">
+        <div class="inputs">
+          <label for="username">Full name</label><br>
+          <input type="text" id="username" placeholder="Enter your full name" class="form-control">
+          <div class="info">A valid username</div><br>
+          <label for="email">E-mail</label><br>
+          <input type="text" id="email" placeholder="Your email" class="form-control">
+          <div class="info">A valid email address</div>
+          <label for="city">City</label><span id="optional">optional</span><br>
+          <input type="text" id="city" placeholder="Your city" class="form-control">
+          <div class="info">Your current city</div>
+        </div>
+        <div class="selections">
+          <div class="ride">
+            <label>Ride in group?</label><br>
+            <input type="radio" class="choice" id="always" name="ride" value="always"> Always
+            <input type="radio" class="choice" id="sometimes" name="ride" value="sometimes"> Sometimes
+            <input type="radio" class="choice" id="never" name="ride" value="never"> Never
+          </div>
+
+          <div class="days">
+            <label>Days of the week</label><br>
+            <input type="checkbox" class="check" id="sun" value="sun"> Sun
+            <input type="checkbox" class="check" id="mon" value="mon"> Mon
+            <input type="checkbox" class="check" id="tue" value="tue"> Tue
+            <input type="checkbox" class="check" id="wed" value="wed"> Wed
+            <input type="checkbox" class="check" id="thu" value="thu"> Thu
+            <input type="checkbox" class="check" id="fri" value="fri"> Fri
+            <input type="checkbox" class="check" id="sat" value="sat"> Sat
+          </div>
+
+          <div class="save">
+            <button type="button" id="cancel">Cancel</button>
+            <button type="submit" id="save">Save</button>
+          </div>
+        </div>
+      </form>
     </div>
 
-    <div id="bikers-list">
-      <p>bikers list</p>
+    <div class="bikers-list">
+      <h1>Bikers</h1>
+      <table cellspacing="0" cellpadding="0">
+        <tr>
+          <th>Full name</th>
+          <th>E-mail</th>
+          <th>City</th>
+          <th>Ride in group</th>
+          <th>Days of the week</th>
+          <th>Registration day</th>
+        </tr>
+        <tr>
+          <td>James Issac</td>
+          <td>issac@mail.com</td>
+          <td>Bay City</td>
+          <td>Always</td>
+          <td>Every day</td>
+          <td>13/08/2018 11:29AM</td>
+        </tr>
+        <tr>
+          <td>Nick Dean</td>
+          <td>nick@mail.com</td>
+          <td>Bay City</td>
+          <td>Sometimes</td>
+          <td>Fri, Sat</td>
+          <td>13/08/2018 11:29AM</td>
+        </tr>
+        <tr>
+          <td>Cindy Vortex</td>
+          <td>cindy@mail.com</td>
+          <td>Bay City</td>
+          <td>Never</td>
+          <td>Wed, Thu, Fri</td>
+          <td>13/08/2018 11:29AM</td>
+        </tr>
+      </table>
     </div>
 
 

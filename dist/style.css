@@ -152,3 +152,121 @@ a:hover {
   font-size: 25px;
   grid-column: 1 / -1
 }
+
+.form {
+  margin-top: 50px;
+  padding-top: 10px;
+}
+
+.formInputs {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.inputs {
+  text-align: left;
+  font-size: 25px;
+}
+
+.form-control {
+  margin-top: 5px;
+  margin-bottom: 30px;
+  padding: 10px 500px 10px 10px;
+  border: 2px solid #bbbbc1;
+  border-radius: 5px;
+}
+
+.form-control:focus {
+  border: 2px solid #16ba2e;
+  border-radius: 5px;
+}
+
+.info {
+  display: none;
+  font-size: 18px;
+  color: #777;
+  text-indent: 1em;
+  margin-bottom: 20px;
+}
+
+input:focus + div.info {
+  display: block;
+}
+
+#optional {
+  margin-left: 580px;
+  font-size: 18px;
+  color: #bbbbc1;
+}
+
+.selections {
+  font-size: 20px;
+}
+
+.ride {
+  margin-bottom: 50px;
+  padding-bottom: 10px;
+}
+
+.days {
+  margin-bottom: 20px;
+  margin-top: 10px;
+  padding-bottom: 20px;
+}
+
+.save {
+  margin-top: 40px;
+  padding-top: 20px;
+  margin-left: 300px;
+  padding-left: 30px;
+}
+
+#cancel {
+  font-size: 20px;
+  border: 2px solid #bbbbc1;
+  border-radius: 5px;
+  background-color: #bbbbc1;
+  padding: 10px 15px 10px 15px;
+}
+
+#save {
+  font-size: 20px;
+  border: 2px solid #16ba2e;
+  border-radius: 5px;
+  background-color: #16ba2e;
+  padding: 10px 15px 10px 15px;
+}
+
+.bikers-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 50px;
+}
+
+table {
+  padding-top: 20px;
+  text-align: left;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #b1efc9;
+}
+
+th {
+  height: 50px;
+  background-color: #16ba2e;
+  color: white;
+  height: 50px;
+  padding: 10px;
+  font-size: 20px;
+  border-bottom: 2px solid #ddd;
+}
+
+td {
+  padding: 10px;
+  font-size: 18px;
+}
