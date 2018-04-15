@@ -1,5 +1,32 @@
 /* import helper functions */
 import { isEqual } from './utils';
+
+/* import bikers list */
+import { bikers } from './bikers';
+
+/* retrieve data from bikers.js and save it to localStorage */
+const getBikers = () => {
+  if (localStorage.getItem('bikers') === null) {
+    /* first time save data */
+    localStorage.setItem('bikers', JSON.stringify(bikers));
+  }
+  const data = JSON.parse(localStorage.getItem('bikers'));
+  const output = data.map((value, index) => {
+    return `
+      <tr>
+        <td>${value.username}</td>
+        <td>${value.email}</td>
+        <td>${value.city}</td>
+        <td>${value.ride}</td>
+        <td>${value.days}</td>
+        <td>${value.date}</td>
+      </tr>
+    `
+  })
+  document.getElementById('t-body').innerHTML = output;
+}
+
+window.onload = getBikers
 /*
  * Add eventlistener on the save button
  */
@@ -61,7 +88,23 @@ document.getElementById('save').addEventListener('click', () => {
     const daTe = `${day}/${'0'+month}/${year.replace(',', '')} ${time}`;
     scope['date'] = daTe;
   }
-  console.log(scope);
+  /* update the bikers */
+  const bikersStore = JSON.parse(localStorage.getItem('bikers'));
+  bikersStore.push(scope);
+  localStorage.setItem('bikers', JSON.stringify(bikersStore));
+  const output = JSON.parse(localStorage.getItem('bikers')).map((value, index) => {
+    return `
+      <tr>
+        <td>${value.username}</td>
+        <td>${value.email}</td>
+        <td>${value.city}</td>
+        <td>${value.ride}</td>
+        <td>${value.days}</td>
+        <td>${value.date}</td>
+      </tr>
+    `
+  })
+  document.getElementById('t-body').innerHTML = output;
   /* reset the form after saved */
   document.getElementById('bikersForm').reset();
 });
