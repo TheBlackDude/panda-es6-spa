@@ -6,7 +6,10 @@ const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
+  entry: {
+    dom: './src/dom.js',
+    app: './src/controller.js'
+  },
   devtool: 'inline-source-map',
   devServer: {
     contentBase: './dist',
@@ -19,7 +22,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin()
   ],
   output: {
-    filename: 'bundle.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist')
   }
 }

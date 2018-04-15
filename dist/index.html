@@ -68,13 +68,13 @@
       <form id="bikersForm" class="formInputs">
         <div class="inputs">
           <label for="username">Full name</label><br>
-          <input type="text" id="username" placeholder="Enter your full name" class="form-control">
+          <input type="text" model="username" id="username" placeholder="Enter your full name" class="form-control">
           <div class="info">A valid username</div><br>
           <label for="email">E-mail</label><br>
-          <input type="text" id="email" placeholder="Your email" class="form-control">
+          <input type="text" model="email" id="email" placeholder="Your email" class="form-control">
           <div class="info">A valid email address</div>
           <label for="city">City</label><span id="optional">optional</span><br>
-          <input type="text" id="city" placeholder="Your city" class="form-control">
+          <input type="text" model="city" id="city" placeholder="Your city" class="form-control">
           <div class="info">Your current city</div>
         </div>
         <div class="selections">
@@ -87,18 +87,18 @@
 
           <div class="days">
             <label>Days of the week</label><br>
-            <input type="checkbox" class="check" id="sun" value="sun"> Sun
-            <input type="checkbox" class="check" id="mon" value="mon"> Mon
-            <input type="checkbox" class="check" id="tue" value="tue"> Tue
-            <input type="checkbox" class="check" id="wed" value="wed"> Wed
-            <input type="checkbox" class="check" id="thu" value="thu"> Thu
-            <input type="checkbox" class="check" id="fri" value="fri"> Fri
-            <input type="checkbox" class="check" id="sat" value="sat"> Sat
+            <input type="checkbox" class="check" id="sun" value="Sun"> Sun
+            <input type="checkbox" class="check" id="mon" value="Mon"> Mon
+            <input type="checkbox" class="check" id="tue" value="Tue"> Tue
+            <input type="checkbox" class="check" id="wed" value="Wed"> Wed
+            <input type="checkbox" class="check" id="thu" value="Thu"> Thu
+            <input type="checkbox" class="check" id="fri" value="Fri"> Fri
+            <input type="checkbox" class="check" id="sat" value="Sat"> Sat
           </div>
 
           <div class="save">
             <button type="button" id="cancel">Cancel</button>
-            <button type="submit" id="save">Save</button>
+            <button type="button" id="save">Save</button>
           </div>
         </div>
       </form>
@@ -143,6 +143,7 @@
     </div>
 
 
-    <script src="bundle.js"></script>
+    <script src="dom.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>
