@@ -2,7 +2,7 @@
  * Helper function to compare two Arrays or two Objects.
  * In a real world application you should use Underscore or lodash helper function to do this.
  */
-export const isEqual = (value, other) => {
+module.exports.isEqual = (value, other) => {
   /* get the value type */
   const type = Object.prototype.toString.call(value);
   /* if the two objects are not the same type return false */
@@ -20,7 +20,7 @@ export const isEqual = (value, other) => {
     /* if it's an Object or Array compare recursivly */
     if (['[object Array]', '[object Object]'].indexOf(itemType) > 0) {
       /* if it fails while comparing return false */
-      if (!isEqual(item1, item2)) return false;
+      if (!this.isEqual(item1, item2)) return false;
     }
     else {
       /* else do a simple comparison */

@@ -1,5 +1,6 @@
 /* import helper functions */
 import { isEqual } from './utils';
+const utils = require('./utils');
 
 /* import bikers list */
 import { bikers } from './bikers';
@@ -76,13 +77,13 @@ document.getElementById('save').addEventListener('click', () => {
   if (selectedDays.length === 7) {
     scope['days'] = 'Every day';
   } else if (selectedDays.length === 5) {
-    if (isEqual(selectedDays, ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'])) {
+    if (utils.isEqual(selectedDays, ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'])) {
       scope['days'] = 'Week days';
     } else {
       scope['days'] = selectedDays;
     }
   } else if (selectedDays.length === 2) {
-    if (isEqual(selectedDays, ['Sun', 'Sat'])) {
+    if (utils.isEqual(selectedDays, ['Sun', 'Sat'])) {
       scope['days'] = 'Weekends';
     } else {
       scope['days'] = selectedDays;
