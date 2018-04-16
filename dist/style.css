@@ -270,3 +270,12 @@ td {
   padding: 10px;
   font-size: 18px;
 }
+
+.delete a{
+  display: none;
+}
+
+.delete:hover a{
+  display: block;
+  color: #16ba2e;
+}

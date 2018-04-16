@@ -4,54 +4,22 @@ import { isEqual } from './utils';
 /* import bikers list */
 import { bikers } from './bikers';
 
+
 /* generate table data */
 const tableData = data => {
   return data.map((value, index) => {
-    const row = document.createElement('tr');
-    for (let i=0; i < 7; i++) {
-      const cell = document.createElement('td')
-      let cellText = ''
-      switch (i) {
-        case 0:
-          cellText = document.createTextNode(`${value.username}`);
-          cell.appendChild(cellText);
-          row.appendChild(cell);
-          break;
-        case 1:
-          cellText = document.createTextNode(`${value.email}`);
-          cell.appendChild(cellText);
-          row.appendChild(cell);
-          break;
-        case 2:
-          cellText = document.createTextNode(`${value.city}`);
-          cell.appendChild(cellText);
-          row.appendChild(cell);
-          break;
-        case 3:
-          cellText = document.createTextNode(`${value.ride}`);
-          cell.appendChild(cellText);
-          row.appendChild(cell);
-          break;
-        case 4:
-          cellText = document.createTextNode(`${value.days}`);
-          cell.appendChild(cellText);
-          row.appendChild(cell);
-          break;
-        case 5:
-          cellText = document.createTextNode(`${value.date}`);
-          cell.appendChild(cellText);
-          row.appendChild(cell);
-          break;
-        case 6:
-          cellText = document.createTextNode(
-            `<td class="delete"><a href="#" id="delete" value="${index}"><i class="far fa-trash-alt"></i></a></td>`
-          );
-          cell.appendChild(cellText);
-          break;
-      }
-    }
-    return row
-  })
+    return `
+      <tr>
+        <td>${value.username}</td>
+        <td>${value.email}</td>
+        <td>${value.city}</td>
+        <td>${value.ride}</td>
+        <td>${value.days}</td>
+        <td>${value.date}</td>
+        <td class="delete" id="delete"><a href="#" onclick="deleteUser(${index})"><i class="far fa-trash-alt"></i></a></td>
+      </tr>
+    `
+  }).join('');
 }
 
 /* retrieve data from bikers.js and save it to localStorage */
@@ -62,31 +30,16 @@ const getBikers = () => {
   }
   const data = JSON.parse(localStorage.getItem('bikers'));
   const output = tableData(data);
-  console.log(output)
-  const tbody = document.getElementsByTagName('tbody')[0];
-  tbody.appendChild(output);
-  console.log(tbody)
+  document.getElementById('t-body').innerHTML = output;
 }
 /* load bikers once the page load */
 window.onload = getBikers
 
-/* Event listener for deleting a user */
-// document.addEventListener('DOMContentLoaded', () => {
-//   console.log('really really');
-//   const deleteId = document.getElementById('delete');
-//   if (deleteId) {
-//     deleteId.addEventListener('click', () => {
-//       console.log('how about now');
-//     })
-//   }
-// })
+/* delete users */
 const deleteUser = index => {
   const bikers = JSON.parse(localStorage.getItem('bikers'));
   bikers.splice(index, 1);
   localStorage.setItem('bikers', JSON.stringify(bikers));
-
-  /* call getBikers */
-  getBikers();
 }
 
 /*
@@ -149,14 +102,15 @@ document.getElementById('save').addEventListener('click', () => {
     const [month, day, year] = [...today.toLocaleString().split(' ')[0].split('/')];
     const daTe = `${day}/${'0'+month}/${year.replace(',', '')} ${time}`;
     scope['date'] = daTe;
+
+    /* update the bikers */
+    const bikersStore = JSON.parse(localStorage.getItem('bikers'));
+    bikersStore.push(scope);
+    localStorage.setItem('bikers', JSON.stringify(bikersStore));
+    const data = JSON.parse(localStorage.getItem('bikers'));
+    const output = tableData(data);
+    document.getElementById('t-body').innerHTML = output;
   }
-  /* update the bikers */
-  const bikersStore = JSON.parse(localStorage.getItem('bikers'));
-  bikersStore.push(scope);
-  localStorage.setItem('bikers', JSON.stringify(bikersStore));
-  const data = JSON.parse(localStorage.getItem('bikers'));
-  const output = tableData(data);
-  document.getElementById('t-body').innerHTML = output;
   /* reset the form after saved */
   document.getElementById('bikersForm').reset();
 });
