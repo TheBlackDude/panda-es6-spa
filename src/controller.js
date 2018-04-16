@@ -4,6 +4,56 @@ import { isEqual } from './utils';
 /* import bikers list */
 import { bikers } from './bikers';
 
+/* generate table data */
+const tableData = data => {
+  return data.map((value, index) => {
+    const row = document.createElement('tr');
+    for (let i=0; i < 7; i++) {
+      const cell = document.createElement('td')
+      let cellText = ''
+      switch (i) {
+        case 0:
+          cellText = document.createTextNode(`${value.username}`);
+          cell.appendChild(cellText);
+          row.appendChild(cell);
+          break;
+        case 1:
+          cellText = document.createTextNode(`${value.email}`);
+          cell.appendChild(cellText);
+          row.appendChild(cell);
+          break;
+        case 2:
+          cellText = document.createTextNode(`${value.city}`);
+          cell.appendChild(cellText);
+          row.appendChild(cell);
+          break;
+        case 3:
+          cellText = document.createTextNode(`${value.ride}`);
+          cell.appendChild(cellText);
+          row.appendChild(cell);
+          break;
+        case 4:
+          cellText = document.createTextNode(`${value.days}`);
+          cell.appendChild(cellText);
+          row.appendChild(cell);
+          break;
+        case 5:
+          cellText = document.createTextNode(`${value.date}`);
+          cell.appendChild(cellText);
+          row.appendChild(cell);
+          break;
+        case 6:
+          cellText = document.createTextNode(
+            `<td class="delete"><a href="#" id="delete" value="${index}"><i class="far fa-trash-alt"></i></a></td>`
+          );
+          cell.appendChild(cellText);
+          break;
+      }
+    }
+    return row
+  })
+}
+
 /* retrieve data from bikers.js and save it to localStorage */
 const getBikers = () => {
   if (localStorage.getItem('bikers') === null) {
@@ -11,22 +61,34 @@ const getBikers = () => {
     localStorage.setItem('bikers', JSON.stringify(bikers));
   }
   const data = JSON.parse(localStorage.getItem('bikers'));
-  const output = data.map((value, index) => {
-    return `
-      <tr>
-        <td>${value.username}</td>
-        <td>${value.email}</td>
-        <td>${value.city}</td>
-        <td>${value.ride}</td>
-        <td>${value.days}</td>
-        <td>${value.date}</td>
-      </tr>
-    `
-  })
-  document.getElementById('t-body').innerHTML = output;
+  const output = tableData(data);
+  console.log(output)
+  const tbody = document.getElementsByTagName('tbody')[0];
+  tbody.appendChild(output);
+  console.log(tbody)
+}
+/* load bikers once the page load */
+window.onload = getBikers
+
+/* Event listener for deleting a user */
+// document.addEventListener('DOMContentLoaded', () => {
+//   console.log('really really');
+//   const deleteId = document.getElementById('delete');
+//   if (deleteId) {
+//     deleteId.addEventListener('click', () => {
+//       console.log('how about now');
+//     })
+//   }
+// })
+const deleteUser = index => {
+  const bikers = JSON.parse(localStorage.getItem('bikers'));
+  bikers.splice(index, 1);
+  localStorage.setItem('bikers', JSON.stringify(bikers));
+
+  /* call getBikers */
+  getBikers();
 }
 
-window.onload = getBikers
 /*
  * Add eventlistener on the save button
  */
@@ -42,7 +104,7 @@ document.getElementById('save').addEventListener('click', () => {
     }
   });
 
-  /* get the checked ride button */
+  /* get the checked ride */
   const rides = document.querySelectorAll('input[type="radio"]');
   rides.forEach(ride => {
     if (ride.checked) {
@@ -50,7 +112,7 @@ document.getElementById('save').addEventListener('click', () => {
     }
   });
 
-  /* get the checked checkboxes */
+  /* get the checked days */
   const daysChecked = document.querySelectorAll('input[type="checkbox"]');
   const selectedDays = [];
   daysChecked.forEach(day => {
@@ -92,18 +154,8 @@ document.getElementById('save').addEventListener('click', () => {
   const bikersStore = JSON.parse(localStorage.getItem('bikers'));
   bikersStore.push(scope);
   localStorage.setItem('bikers', JSON.stringify(bikersStore));
-  const output = JSON.parse(localStorage.getItem('bikers')).map((value, index) => {
-    return `
-      <tr>
-        <td>${value.username}</td>
-        <td>${value.email}</td>
-        <td>${value.city}</td>
-        <td>${value.ride}</td>
-        <td>${value.days}</td>
-        <td>${value.date}</td>
-      </tr>
-    `
-  })
+  const data = JSON.parse(localStorage.getItem('bikers'));
+  const output = tableData(data);
   document.getElementById('t-body').innerHTML = output;
   /* reset the form after saved */
   document.getElementById('bikersForm').reset();
