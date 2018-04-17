@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  # Panda container
+  panda:
+    build: .
+    volumes:
+      - .:/code
+    ports:
+      - "9000:9000"
+    command: start_dev
