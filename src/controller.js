@@ -1,7 +1,5 @@
 /* import helper functions */
-import { isEqual } from './utils';
 const utils = require('./utils');
-
 /* import bikers list */
 import { bikers } from './bikers';
 
@@ -17,14 +15,14 @@ const tableData = data => {
         <td>${value.ride}</td>
         <td>${value.days}</td>
         <td>${value.date}</td>
-        <td class="delete" id="delete"><a href="#" onclick="deleteUser(${index})"><i class="far fa-trash-alt"></i></a></td>
+        <td class="delete"><a onclick="deleteUser(${index})"><i class="far fa-trash-alt"></i></a></td>
       </tr>
     `
   }).join('');
 }
 
 /* retrieve data from bikers.js and save it to localStorage */
-const getBikers = () => {
+window.addEventListener('load', () => {
   if (localStorage.getItem('bikers') === null) {
     /* first time save data */
     localStorage.setItem('bikers', JSON.stringify(bikers));
@@ -32,15 +30,16 @@ const getBikers = () => {
   const data = JSON.parse(localStorage.getItem('bikers'));
   const output = tableData(data);
   document.getElementById('t-body').innerHTML = output;
-}
-/* load bikers once the page load */
-window.onload = getBikers
+})
 
 /* delete users */
-const deleteUser = index => {
+window.deleteUser = index => {
   const bikers = JSON.parse(localStorage.getItem('bikers'));
   bikers.splice(index, 1);
   localStorage.setItem('bikers', JSON.stringify(bikers));
+  const data = JSON.parse(localStorage.getItem('bikers'));
+  const output = tableData(data);
+  document.getElementById('t-body').innerHTML = output;
 }
 
 /*

@@ -278,4 +278,5 @@ td {
 .delete:hover a{
   display: block;
   color: #16ba2e;
+  cursor: pointer;
 }
