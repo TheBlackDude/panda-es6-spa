@@ -21,15 +21,21 @@ const tableData = data => {
   }).join('');
 }
 
+/* helper function to get data from localStorage and write it to DOM */
+const writeDom = () => {
+  const data = JSON.parse(localStorage.getItem('bikers'));
+  const output = tableData(data);
+  document.getElementById('t-body').innerHTML = output;
+}
+
 /* retrieve data from bikers.js and save it to localStorage */
 window.addEventListener('load', () => {
   if (localStorage.getItem('bikers') === null) {
     /* first time save data */
     localStorage.setItem('bikers', JSON.stringify(bikers));
   }
-  const data = JSON.parse(localStorage.getItem('bikers'));
-  const output = tableData(data);
-  document.getElementById('t-body').innerHTML = output;
+  /* write to DOM */
+  writeDom();
 })
 
 /* delete users */
@@ -37,30 +43,41 @@ window.deleteUser = index => {
   const bikers = JSON.parse(localStorage.getItem('bikers'));
   bikers.splice(index, 1);
   localStorage.setItem('bikers', JSON.stringify(bikers));
-  const data = JSON.parse(localStorage.getItem('bikers'));
-  const output = tableData(data);
-  document.getElementById('t-body').innerHTML = output;
+  /* write to DOM */
+  writeDom();
 }
 
 /*
  * Add eventlistener on the save button
  */
 document.getElementById('save').addEventListener('click', () => {
-  const scope = {};
+  let scope = {};
+
+  /* simple mail validation */
+  const checkEmail = email => {
+    const re = /\S+@\S+\.\S+/;
+    return re.test(email);
+  }
 
   /* get all the input text forms */
   const inputs = document.querySelectorAll('[model]');
+  /* create a temp object to hold the input values */
+  const temp = {}
   /* loop through all the inputs */
   inputs.forEach(input => {
     if (input.type === 'text' && input.value !== '') {
-      scope[input.id] = input.value;
+      temp[input.id] = input.value;
     }
   });
+  /* if email is valid then add to scope */
+  if (checkEmail(temp.email)) {
+    scope = {...temp}
+  }
 
   /* get the checked ride */
   const rides = document.querySelectorAll('input[type="radio"]');
   rides.forEach(ride => {
-    if (ride.checked) {
+    if (ride.checked && scope.email) {
       scope[ride.name] = ride.value;
     }
   });
@@ -69,7 +86,7 @@ document.getElementById('save').addEventListener('click', () => {
   const daysChecked = document.querySelectorAll('input[type="checkbox"]');
   const selectedDays = [];
   daysChecked.forEach(day => {
-    if (day.checked) {
+    if (day.checked && scope.ride) {
       selectedDays.push(day.value);
     }
   });
@@ -107,9 +124,8 @@ document.getElementById('save').addEventListener('click', () => {
     const bikersStore = JSON.parse(localStorage.getItem('bikers'));
     bikersStore.push(scope);
     localStorage.setItem('bikers', JSON.stringify(bikersStore));
-    const data = JSON.parse(localStorage.getItem('bikers'));
-    const output = tableData(data);
-    document.getElementById('t-body').innerHTML = output;
+    /* write to DOM */
+    writeDom();
   }
   /* reset the form after saved */
   document.getElementById('bikersForm').reset();
