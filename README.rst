@@ -2,6 +2,8 @@
 Introduction & Settings
 ***********************
 
+*NOTE* to delete an item you have to hover over at the end of the row to see the trash icon.
+
 Introduction
 ============
 
